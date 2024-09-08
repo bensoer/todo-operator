@@ -1,0 +1,23 @@
+# permissions for end users to view todolists.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: todo-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: todolist-viewer-role
+rules:
+- apiGroups:
+  - list.todo-operator.projectterris.com
+  resources:
+  - todolists
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - list.todo-operator.projectterris.com
+  resources:
+  - todolists/status
+  verbs:
+  - get

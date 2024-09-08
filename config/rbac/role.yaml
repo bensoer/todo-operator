@@ -1,0 +1,32 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: manager-role
+rules:
+- apiGroups:
+  - list.todo-operator.projectterris.com
+  resources:
+  - todolists
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - list.todo-operator.projectterris.com
+  resources:
+  - todolists/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - list.todo-operator.projectterris.com
+  resources:
+  - todolists/status
+  verbs:
+  - get
+  - patch
+  - update
